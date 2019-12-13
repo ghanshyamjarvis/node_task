@@ -1,34 +1,16 @@
+var express = require ('express')
+var app =express()
+var path = require('path')
 
-const express =  require('express');
+app.use(express.static(path.join(__dirname)))
 
-const app = express();
-const path =('path');
-
-const router = express.Router();
-
-
-
-router.get('/',function (request,response)
+app.get('./',function (req,res)
 {
-  response.sendFile(path.join(__templated-projection + './index.html'))
+  console.log(req,url)
+  res.status(200).sendFile(__dirname,'index.js')
 });
 
-
-
-router.get('/generic',function (request,response)
+app.listen(4000,function ()
 {
-  response.sendFile(path.join(__templated-projection + './generic.html'))
+  console.log("Connected Successful at Port 4000")
 });
-
-
-router.get('/Elements',function (request,response)
-{
-  response.sendFile(path.join(__templated-projection + './elements.html'))
-});
-
-app.use('/', router);
-
-app.listen(process.env.port || 3000);
-
-console.log('Running at Port 3000');
-
