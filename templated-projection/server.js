@@ -1,3 +1,4 @@
+/*
 
 
 
@@ -22,6 +23,7 @@ http.createServer(function (request,response)
   })
 }).listen(8000);
 console.log("Server Connected Successfully at port 8000");
+*/
 
 /*
 var http = require('http');
@@ -40,3 +42,22 @@ fs.readFile('./index.html', function (err, html) {
   }).listen(PORT);
   console.log("port",PORT)
 });*/
+
+
+var express = require ('express');
+var app = express();
+var path =require('path')
+
+
+app.use(express.static(path.join(__dirname)))
+
+app.get('/',function (request,response)
+{
+  console.log(request,url)
+  response.status(200).sendFile(path.join(__dirname,'index.html'))
+
+});
+
+app.listen(4000,function () {
+  console.log("Listing at port 4000")
+});
